@@ -17,20 +17,20 @@ const salaryOP = {
     tax (bs) {
         const grosss = salaryOP.gross(bs) * 12;
         if(bs > 1000000) {
-            return grosss * 0.30;
+            return (grosss * 0.30)/12;
         }
         else if(bs > 500000) {
-            return grosss * 0.20;
+            return (grosss * 0.20)/12;
         }
         else if(bs > 250000) {
-            return grosss * 0.05;
+            return (grosss * 0.05)/12;
         }
         else {
             return 0;
         }
     },
     gross (bs) {
-        return (salaryOP.house(bs) + salaryOP.travel(bs) + salaryOP.medical(bs) + salaryOP.dear(bs));
+        return (salaryOP.house(bs) + salaryOP.travel(bs) + salaryOP.medical(bs) + salaryOP.dear(bs) + bs);
     },
     net (bs) {
         return (salaryOP.gross(bs) - salaryOP.fund(bs) - salaryOP.tax(bs));
